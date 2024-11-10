@@ -1,11 +1,11 @@
 return {
     {
-        'VonHeikemen/lsp-zero.nvim', 
+        'VonHeikemen/lsp-zero.nvim',
         branch = 'v4.x'
     },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
-    { 
+    {
         'L3MON4D3/LuaSnip',
         config = function()
             require('luasnip.loaders.from_snipmate').lazy_load({ include = { 'php', 'javascript', 'typescript' } })
