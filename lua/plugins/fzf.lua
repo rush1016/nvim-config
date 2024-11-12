@@ -3,10 +3,20 @@ return {
     -- optional for icon support
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-        require('fzf-lua').setup({'max-perf'})
+        require('fzf-lua').setup({
+            -- 'max-perf',
+            files = {
+                prompt = "Files❯ ",
+                cwd_prompt = false
+            },
+            winopts = {
+                fullscreen = true
+            }
+        })
         local fzf = require('fzf-lua')
         vim.keymap.set('n', '<leader>p', fzf.files, { desc = 'Fuzzy Files' })
-        vim.keymap.set('n', '<leader>ff', fzf.live_grep, { desc = 'Live Grep' })
+        vim.keymap.set('n', '<leader>r', fzf.oldfiles, { desc = 'Fuzzy Files' })
+        vim.keymap.set('n', '<leader>ff', fzf.live_grep_native, { desc = 'Live Grep' })
         vim.keymap.set('n', '<leader>e', fzf.buffers, { desc = 'Buffers' })
         vim.keymap.set('n', '<leader>fh', fzf.help_tags, { desc = 'Help Tags' })
         vim.keymap.set('n', '<leader>t', fzf.lsp_live_workspace_symbols, { desc = 'Workspace Symbols' })

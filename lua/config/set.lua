@@ -23,5 +23,6 @@ vim.opt.signcolumn = 'yes'
 vim.opt.updatetime = 50
 
 vim.g.mapleader = ' '
+vim.g.editorconfig = false
 
 vim.api.nvim_set_option('clipboard', 'unnamed')

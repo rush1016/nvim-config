@@ -9,7 +9,7 @@ return {
     config = function()
         require('neo-tree').setup({
             window = {
-                position = 'float'
+                position = 'current'
             },
             popup_border_style = 'rounded',
             enable_git_status = true,
