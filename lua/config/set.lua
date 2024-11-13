@@ -18,11 +18,13 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 4
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes:1'
 
 vim.opt.updatetime = 50
 
 vim.g.mapleader = ' '
 vim.g.editorconfig = false
+
+vim.opt.laststatus = 3
 
 vim.api.nvim_set_option('clipboard', 'unnamed')
