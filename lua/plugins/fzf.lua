@@ -4,13 +4,20 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         require('fzf-lua').setup({
-            -- 'max-perf',
+            'telescope',
             files = {
                 prompt = "Files❯ ",
                 cwd_prompt = false
             },
             winopts = {
-                fullscreen = true
+                backdrop = 100,
+                width = 0.50,
+                height = 0.60,
+                preview = {
+                    horizontal = 'right:70%',
+                    layout = 'flex',
+                    hidden = 'hidden',
+                }
             }
         })
         local fzf = require('fzf-lua')
