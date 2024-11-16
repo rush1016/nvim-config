@@ -4,19 +4,24 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         require('fzf-lua').setup({
-            'telescope',
             files = {
                 prompt = "Files❯ ",
                 cwd_prompt = false
             },
             winopts = {
                 backdrop = 100,
-                width = 0.60,
-                height = 0.75,
+                width = 0.80,
+                height = 0.80,
                 preview = {
                     horizontal = 'right:65%',
-                    vertical = "up:65%",
-                    layout = "vertical",
+                    vertical = "down:55%",
+                    layout = "horizontal",
+                }
+            },
+            keymap = {
+                builtin = {
+                    ["<C-d>"] = "preview-down",
+                    ["<C-u>"] = "preview-up",
                 }
             }
         })
