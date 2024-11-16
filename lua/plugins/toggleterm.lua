@@ -7,16 +7,17 @@ return {
             open_mapping = [[<c-\>]],
             -- highlights = highlights,
             direction = 'float',
+            close_on_exit = true,
             float_opts = {
                 border = 'curved',
-                width = 120,
-                height = 25,
+                width = 140,
+                height = 30,
                 winblend = 0,
             }
         })
 
         local Terminal  = require('toggleterm.terminal').Terminal
-        local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+        local lazygit = Terminal:new({ cmd = "lazygit", hidden = true,  })
 
         function _lazygit_toggle()
             lazygit:toggle()

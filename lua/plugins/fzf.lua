@@ -11,12 +11,12 @@ return {
             },
             winopts = {
                 backdrop = 100,
-                width = 0.50,
-                height = 0.60,
+                width = 0.60,
+                height = 0.75,
                 preview = {
-                    horizontal = 'right:70%',
-                    layout = 'flex',
-                    hidden = 'hidden',
+                    horizontal = 'right:65%',
+                    vertical = "up:65%",
+                    layout = "vertical",
                 }
             }
         })

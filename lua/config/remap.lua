@@ -22,3 +22,7 @@ vim.keymap.set("n", "<leader>sc",
                end,
               { desc = "Toggle cmdheight" }
 )
+
+-- Beginning or end of selection
+vim.keymap.set('v', '<S-i>', '<esc>`<i', { noremap = true })
+vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })

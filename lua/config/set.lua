@@ -8,7 +8,6 @@ vim.opt.rnu = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
-
 vim.opt.swapfile = false
 vim.opt.backup = false
 
@@ -26,5 +25,9 @@ vim.g.mapleader = ' '
 vim.g.editorconfig = false
 
 vim.opt.laststatus = 3
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.api.nvim_set_option('clipboard', 'unnamed')
+
+vim.lsp.set_log_level("debug")
