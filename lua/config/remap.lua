@@ -13,3 +13,12 @@ vim.keymap.set('n', '<c-h>', '<c-w>h', {})
 -- Add new lines
 vim.keymap.set('n', 'zj', 'o<Esc>k', {})
 vim.keymap.set('n', 'zk', 'O<Esc>j', {})
+
+
+-- Toggle command line
+vim.keymap.set("n", "<leader>sc",
+               function()
+                 vim.opt.cmdheight = 1 - vim.opt.cmdheight._value
+               end,
+              { desc = "Toggle cmdheight" }
+)
