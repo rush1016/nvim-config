@@ -14,15 +14,6 @@ vim.keymap.set('n', '<c-h>', '<c-w>h', {})
 vim.keymap.set('n', 'zj', 'o<Esc>k', {})
 vim.keymap.set('n', 'zk', 'O<Esc>j', {})
 
-
--- Toggle command line
-vim.keymap.set("n", "<leader>sc",
-               function()
-                 vim.opt.cmdheight = 1 - vim.opt.cmdheight._value
-               end,
-              { desc = "Toggle cmdheight" }
-)
-
 -- Beginning or end of selection
 vim.keymap.set('v', '<S-i>', '<esc>`<i', { noremap = true })
 vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
