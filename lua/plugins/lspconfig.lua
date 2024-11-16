@@ -51,29 +51,28 @@ return {
         'williamboman/mason-lspconfig.nvim',
         config = function()
             require('mason-lspconfig').setup({
-                ensure_installed = { 'lua_ls', 'ts_ls', 'eslint', 'intelephense', 'volar' },
+                ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'intelephense', 'volar' },
                 handlers = {
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
-
-                        ts_ls = function()
-                            require('lspconfig').ts_ls.setup({
-                                init_options = {
-                                    plugins = {
-                                        {
-                                            name = "@vue/typescript-plugin",
-                                            location = "~/Library/Application Support/Herd/config/nvm/versions/node/v20.16.0/lib/node_modules/@vue/typescript-plugin",
-                                            languages = {"javascript", "typescript", "vue"},
-                                        },
+                    end,
+                    ts_ls = function()
+                        require('lspconfig').ts_ls.setup({
+                            init_options = {
+                                plugins = {
+                                    {
+                                        name = "@vue/typescript-plugin",
+                                        location = "/Users/qip-innovation/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                                        languages = { "vue" },
                                     },
                                 },
-                                filetypes = {
-                                    "javascript",
-                                    "typescript",
-                                    "vue",
-                                },
-                            })
-                        end
+                            },
+                            filetypes = {
+                                "javascript",
+                                "typescript",
+                                "vue",
+                            },
+                        })
                     end
                 }
             })
