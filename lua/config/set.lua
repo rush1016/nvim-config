@@ -17,7 +17,7 @@ vim.opt.inccommand = "nosplit"
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 4
+vim.opt.scrolloff = 6
 vim.opt.signcolumn = 'yes:1'
 
 vim.opt.updatetime = 50
@@ -30,5 +30,3 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.api.nvim_set_option('clipboard', 'unnamed')
-
-vim.lsp.set_log_level("debug")
