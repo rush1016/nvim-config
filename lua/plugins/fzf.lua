@@ -10,11 +10,11 @@ return {
             },
             winopts = {
                 backdrop = 100,
-                width = 0.80,
+                width = 0.90,
                 height = 0.80,
                 preview = {
-                    horizontal = 'right:65%',
-                    vertical = "down:55%",
+                    horizontal = 'right:45%',
+                    vertical = "up:55%",
                     layout = "horizontal",
                 }
             },
