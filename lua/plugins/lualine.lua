@@ -28,6 +28,9 @@ return {
                 lualine_y = {'progress'},
                 lualine_z = {'filetype'}
             },
+            tabline = {
+                lualine_a = {}
+            }
         })
     end
 }
