@@ -22,6 +22,9 @@ return {
                 builtin = {
                     ["<C-d>"] = "preview-down",
                     ["<C-u>"] = "preview-up",
+                },
+                fzf = {
+                    ["ctrl-q"] = "select-all+accept"
                 }
             }
         })
