@@ -30,3 +30,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.api.nvim_set_option('clipboard', 'unnamed')
+
+vim.filetype.add({
+    pattern = {
+        [".*%.blade%.php"] = "blade",
+    }
+})

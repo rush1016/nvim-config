@@ -99,7 +99,7 @@ return {
                     ['<C-k>'] = cmp.mapping.select_prev_item(),
                     ['<CR>'] = cmp.mapping.confirm(),
                     -- Jump to the next snippet placeholder
-                    ['<C-f>'] = cmp.mapping(function(fallback)
+                    ['<Tab>'] = cmp.mapping(function(fallback)
                         local luasnip = require('luasnip')
                         if luasnip.locally_jumpable(1) then
                             luasnip.jump(1)
@@ -108,7 +108,7 @@ return {
                         end
                     end, {'i', 's'}),
                     -- Jump to the previous snippet placeholder
-                    ['<C-b>'] = cmp.mapping(function(fallback)
+                    ['<S-Tab>'] = cmp.mapping(function(fallback)
                         local luasnip = require('luasnip')
                         if luasnip.locally_jumpable(-1) then
                             luasnip.jump(-1)

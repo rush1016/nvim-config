@@ -9,11 +9,16 @@ return {
     config = function()
         require('neo-tree').setup({
             window = {
-                position = 'current'
+                position = 'left'
             },
             popup_border_style = 'rounded',
             enable_git_status = true,
-            enable_diagnostics = true
+            enable_diagnostics = true,
+            filesystem = {
+                follow_current_file = {
+                    enabled = true
+                }
+            },
         })
     end
 }

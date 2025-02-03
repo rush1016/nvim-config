@@ -13,7 +13,16 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            require('github-theme').setup()
+            local options = {
+                darken = {
+                    floats = false,
+                    sidebars = {
+                        enable = false,
+                        list = {'qf', 'netrw'} -- default is {}
+                    }
+                }
+            }
+            require('github-theme').setup({ options = options })
 
             vim.cmd.colorscheme 'github_dark_default'
             vim.cmd("highlight Normal guibg=#0d1118")

@@ -3,17 +3,27 @@ return {
     event = 'ColorScheme',
     config = function()
         local highlights = require('rose-pine.plugins.toggleterm')
-        require('toggleterm').setup({ 
+        require('toggleterm').setup({
+            size = function(term)
+                if term.direction == "horizontal" then
+                    return 15
+                elseif term.direction == "vertical" then
+                    return vim.o.columns * 0.25
+                end
+            end,
+            -- size = vim.o.columns * 0.3,
             open_mapping = [[<c-\>]],
             -- highlights = highlights,
             direction = 'float',
             close_on_exit = true,
             float_opts = {
                 border = 'curved',
-                width = 140,
-                height = 30,
+                width = 60,
+                height = 60,
+                row = 0,
+                col = 250,
                 winblend = 0,
-            }
+            },
         })
 
         local Terminal  = require('toggleterm.terminal').Terminal
