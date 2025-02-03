@@ -17,3 +17,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
+
+-- Auto reload files
+vim.api.nvim_create_autocmd("CursorHold", {
+  pattern = "*",
+  command = "checktime | silent! checktime",
+})
