@@ -11,8 +11,10 @@ vim.keymap.set('n', '<c-l>', '<c-w>l', {})
 vim.keymap.set('n', '<c-h>', '<c-w>h', {})
 
 -- Add new lines
-vim.keymap.set('n', 'zj', 'o<Esc>k', {})
-vim.keymap.set('n', 'zk', 'O<Esc>j', {})
+vim.keymap.set('i', '<C-j>', '<Esc>o', { silent = true })
+vim.keymap.set('i', '<C-k>', '<Esc>O', { silent = true })
+vim.keymap.set('i', '<C-CR>', '<Esc>o', { silent = true })
+vim.keymap.set('i', '<C-S-CR>', '<Esc>O', { silent = true })
 
 -- Beginning or end of selection
 vim.keymap.set('v', '<S-i>', '<esc>`<i', { noremap = true })
