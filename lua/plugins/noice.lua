@@ -5,10 +5,6 @@ return {
         "MunifTanjim/nui.nvim"
     },
     config = function()
-        require("noice").setup({
-            presets = {
-                bottom_search = true
-            }
-        });
+        require("noice").setup();
     end
 }
