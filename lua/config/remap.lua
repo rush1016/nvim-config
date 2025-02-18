@@ -1,5 +1,6 @@
 -- Neotree
 vim.keymap.set('n', '<leader>n', ':Neotree toggle<cr>', { silent = true, desc = 'Filetree' })
+vim.keymap.set('n', '<leader>b', ':lua MiniFiles.open()<cr>', { silent = true, desc = 'Filetree' })
 
 -- Close buffer
 vim.keymap.set('n', '<leader>w', ' :<C-U>bprevious <bar> bdelete #<CR>', { silent = true, desc = 'Close buffer' })
@@ -23,3 +24,8 @@ vim.keymap.set('i', '<C-S-CR>', '<Esc>O', { silent = true })
 -- Beginning or end of selection
 vim.keymap.set('v', '<S-i>', '<esc>`<i', { noremap = true })
 vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
+
+-- Toggle wrap/nowrap with \w
+vim.keymap.set('n', '\\w', function()
+    vim.wo.wrap = not vim.wo.wrap
+end, { desc = 'Toggle wrap/nowrap' })

@@ -37,6 +37,7 @@ return {
         vim.keymap.set('n', '<leader>t', fzf.lsp_live_workspace_symbols, { desc = 'Workspace Symbols' })
         vim.keymap.set('n', '<leader>o', fzf.lsp_document_symbols, { desc = 'Document Symbols' })
         vim.keymap.set('n', '<leader>fb', fzf.blines, { desc = 'Buffer lines' })
+        vim.keymap.set('n', '<leader>ft', fzf.colorschemes, { desc = 'Select theme' })
 
         -- Git Maps
         vim.keymap.set('n', '<leader>gb', fzf.git_branches, { desc = 'Git branches' })
