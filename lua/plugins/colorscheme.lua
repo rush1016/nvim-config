@@ -13,20 +13,27 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            local options = {
+            require('github-theme').setup({
+                specs = {
+                    github_dark_default = {
+                        bg0 = '#000000',
+                        bg1 = '#000000',
+                        bg2 = '#000000',
+                        bg3 = '#000000',
+                        bg4 = '#000000',
+                        float_bg = '#000000',
+                    }
+                },
                 darken = {
-                    floats = false,
+                    floats = true,
                     sidebars = {
                         enable = false,
-                        list = {'qf', 'netrw'} -- default is {}
+                        list = {'qf', 'netrw'}
                     }
                 }
-            }
-            require('github-theme').setup({ options = options })
+             })
 
-            vim.cmd.colorscheme 'github_dark_default'
-            vim.cmd("highlight Normal guibg=#0d1118")
-
+            vim.cmd.colorscheme('github_dark_default')
         end,
     }
 }
