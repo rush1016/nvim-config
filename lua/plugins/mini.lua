@@ -13,19 +13,6 @@ return {
         version = '*',
         config = function()
             require('mini.surround').setup()
-        end
-    },
-    {
-        'echasnovski/mini.splitjoin',
-        version = '*',
-        config = function() require('mini.splitjoin').setup({
-            mappings = {
-                toggle = '<leader>m',
-                split = '<leader>s',
-                join = '<leader>j',
-            }
-        }) end
-    },
     {
         'echasnovski/mini.clue',
         version = '*',
