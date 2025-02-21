@@ -27,4 +27,8 @@ vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
 -- Toggle wrap/nowrap with \w
 vim.keymap.set('n', '\\w', function()
     vim.wo.wrap = not vim.wo.wrap
-end, { desc = 'Toggle wrap/nowrap' })
+end, { desc = 'Toggle wrap' })
+
+vim.keymap.set('n', '\\r', function()
+    vim.wo.relativenumber = not vim.wo.relativenumber
+end, { desc = 'Toggle relative number' })
