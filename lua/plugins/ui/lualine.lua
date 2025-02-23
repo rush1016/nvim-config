@@ -1,14 +1,10 @@
 return {
     'nvim-lualine/lualine.nvim',
     config = function()
-        local project_root = {
-            function()
-                return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-            end,
-            icon = "",
-            cond = hide_in_width,
-            separator = '',
-        }
+        local project_root = function()
+            return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+        end
+
 
         local custom_github_dark_default = require('lualine.themes.github_dark_default')
 
@@ -24,21 +20,19 @@ return {
             },
             sections = {
                 lualine_a = {'mode'},
-                lualine_b = {'branch', 'diff'},
-                lualine_c = {
+                lualine_b = {
                     project_root,
                     {
                         'filename',
+                        path = 1,
                         file_status = true,
                     }
                 },
-                lualine_x = {'location'},
-                lualine_y = {'progress'},
+                lualine_c = {},
+                lualine_x = {},
+                lualine_y = {},
                 lualine_z = {'filetype'}
             },
-            tabline = {
-                lualine_a = {}
-            }
         })
     end
 }
