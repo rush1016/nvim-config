@@ -1,5 +1,3 @@
--- Neotree
-vim.keymap.set('n', '<leader>n', ':Neotree toggle<cr>', { silent = true, desc = 'Filetree' })
 
 -- Close buffer
 vim.keymap.set('n', '<leader>w', ' :<C-U>bprevious <bar> bdelete #<CR>', { silent = true, desc = 'Close buffer' })
@@ -13,6 +11,8 @@ vim.keymap.set('n', '<leader>g', '', { silent = true, desc = 'Git options' })
 -- vim.keymap.set('n', '<c-k>', '<c-w>k', {})
 -- vim.keymap.set('n', '<c-l>', '<c-w>l', {})
 -- vim.keymap.set('n', '<c-h>', '<c-w>h', {})
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Add new lines
 vim.keymap.set('i', '<C-j>', '<Esc>o', { silent = true })
