@@ -9,10 +9,10 @@ vim.keymap.set('n', '<leader>f', '', { silent = true, desc = 'Find options' })
 vim.keymap.set('n', '<leader>g', '', { silent = true, desc = 'Git options' })
 
 -- Navigate panes / buffers
-vim.keymap.set('n', '<c-j>', '<c-w>j', {})
-vim.keymap.set('n', '<c-k>', '<c-w>k', {})
-vim.keymap.set('n', '<c-l>', '<c-w>l', {})
-vim.keymap.set('n', '<c-h>', '<c-w>h', {})
+-- vim.keymap.set('n', '<c-j>', '<c-w>j', {})
+-- vim.keymap.set('n', '<c-k>', '<c-w>k', {})
+-- vim.keymap.set('n', '<c-l>', '<c-w>l', {})
+-- vim.keymap.set('n', '<c-h>', '<c-w>h', {})
 
 -- Add new lines
 vim.keymap.set('i', '<C-j>', '<Esc>o', { silent = true })
