@@ -9,7 +9,7 @@ return {
     config = function()
         require('neo-tree').setup({
             window = {
-                position = 'left'
+                position = 'current'
             },
             popup_border_style = 'rounded',
             enable_git_status = true,
@@ -20,5 +20,7 @@ return {
                 }
             },
         })
+
+        vim.keymap.set('n', '<leader>n', ':Neotree reveal<cr>', { silent = true, desc = 'Filetree' })
     end
 }
