@@ -6,14 +6,15 @@ return {
         local fzf = require('fzf-lua')
         local actions = fzf.actions;
         fzf.setup({
-            {'max-perf', 'default', 'Telescope'},
+            {'max-perf', 'borderless-full'},
             files = {
-                prompt = "Files❯ ",
-                cwd_prompt = false
+                cwd_prompt = false,
+                cwd_header = true
             },
             winopts = {
                 backdrop = 100,
-                width = 0.90,
+                border = "rounded",
+                width = 0.65,
                 height = 0.80,
                 fullscreen = false,
                 preview = {
@@ -23,6 +24,20 @@ return {
                     vertical = "up:55%",
                     layout = "none",
                 }
+            },
+            fzf_opts = {
+                ["--info"] = "hidden",
+                ["--no-separator"] = true,
+                ["--layout"] = 'default',
+                ["--pointer"] = ' ',
+                ["--border"] = 'none',
+                ["--scrollbar"] = ' '
+            },
+            fzf_colors = {
+                ["bg"] = { "bg", "Normal" },
+                ["pointer"] = { "bg", "Normal" },
+                ["gutter"] = { "bg", "Normal" },
+                ["header"] = { "Normal" },
             },
             keymap = {
                 builtin = {
@@ -37,7 +52,8 @@ return {
                 actions = {
                     ["ctrl-d"]      = false,
                     ["ctrl-x"]      = { fn = actions.buf_del, reload = true },
-                }
+                },
+                no_header = true
             }
         })
         vim.keymap.set('n', '<leader>p', fzf.files, { desc = 'Open file' })
