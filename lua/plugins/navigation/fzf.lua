@@ -14,8 +14,8 @@ return {
             winopts = {
                 backdrop = 100,
                 border = "rounded",
-                width = 0.65,
-                height = 0.80,
+                width = 0.90,
+                height = 0.90,
                 fullscreen = false,
                 preview = {
                     hidden = true,

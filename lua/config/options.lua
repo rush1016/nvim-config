@@ -1,6 +1,7 @@
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 vim.g.editorconfig = false
 
+vim.opt.guicursor = ""
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4

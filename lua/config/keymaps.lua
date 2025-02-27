@@ -1,18 +1,15 @@
-
 -- Close buffer
 vim.keymap.set('n', '<leader>w', ' :<C-U>bprevious <bar> bdelete #<CR>', { silent = true, desc = 'Close buffer' })
 
--- Add description to letter binding
-vim.keymap.set('n', '<leader>f', '', { silent = true, desc = 'Find options' })
-vim.keymap.set('n', '<leader>g', '', { silent = true, desc = 'Git options' })
-
--- Navigate panes / buffers
--- vim.keymap.set('n', '<c-j>', '<c-w>j', {})
--- vim.keymap.set('n', '<c-k>', '<c-w>k', {})
--- vim.keymap.set('n', '<c-l>', '<c-w>l', {})
--- vim.keymap.set('n', '<c-h>', '<c-w>h', {})
+-- Move highlighted lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
+
+-- Auto center
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set('n', 'n', 'nzzzv', { silent = true })
+vim.keymap.set('n', 'N', 'Nzzzv', { silent = true })
 
 -- Add new lines
 vim.keymap.set('i', '<C-j>', '<Esc>o', { silent = true })
@@ -24,10 +21,7 @@ vim.keymap.set('i', '<C-S-CR>', '<Esc>O', { silent = true })
 vim.keymap.set('v', '<S-i>', '<esc>`<i', { noremap = true })
 vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
 
--- Toggle wrap/nowrap with \w
-vim.keymap.set('n', '\\w', function()
-    vim.wo.wrap = not vim.wo.wrap
-end, { desc = 'Toggle wrap' })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set('n', '\\r', function()
     vim.wo.relativenumber = not vim.wo.relativenumber
