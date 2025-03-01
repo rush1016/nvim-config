@@ -23,6 +23,8 @@ vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
+
 vim.keymap.set('n', '\\r', function()
     vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = 'Toggle relative number' })

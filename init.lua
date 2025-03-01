@@ -23,3 +23,10 @@ vim.api.nvim_create_autocmd("CursorHold", {
   pattern = "*",
   command = "checktime | silent! checktime",
 })
+
+vim.diagnostic.config({
+  virtual_text = false,
+  underline = true,
+  signs = true,
+  update_in_insert = false,
+})

@@ -53,7 +53,6 @@ return {
                     ["ctrl-d"]      = false,
                     ["ctrl-x"]      = { fn = actions.buf_del, reload = true },
                 },
-                no_header = true
             }
         })
         vim.keymap.set('n', '<leader>p', fzf.files, { desc = 'Open file' })
@@ -63,11 +62,5 @@ return {
         vim.keymap.set('n', '<leader>fh', fzf.help_tags, { desc = 'Help Tags' })
         vim.keymap.set('n', '<leader>o', fzf.lsp_document_symbols, { desc = 'Find symbols in document' })
         vim.keymap.set('n', '<leader>fb', fzf.blines, { desc = 'Find in buffer' })
-        vim.keymap.set('n', '<leader>ft', fzf.colorschemes, { desc = 'Select theme' })
-
-        -- Git Maps
-        vim.keymap.set('n', '<leader>gb', fzf.git_branches, { desc = 'Git branches' })
-        vim.keymap.set('n', '<leader>gs', fzf.git_status, { desc = 'Git status' })
-        vim.keymap.set('n', '<leader>gc', fzf.git_commits, { desc = 'Git commit options' })
     end
 }
