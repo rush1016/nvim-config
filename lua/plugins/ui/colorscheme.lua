@@ -1,17 +1,25 @@
+function ColorMyPencils(color)
+	color = color or "rose-pine-moon"
+	vim.cmd.colorscheme(color)
+
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+end
+
 return {
     {
         'rose-pine/neovim',
         name = 'rose-pine',
         config = function()
             require('rose-pine').setup({
-                variant = 'main',
-                before_highlight = function(group, highlight, palette)
-                    if highlight.bg then
-                        highlight.bg = "#000000"
-                    end
-                end,
+                disable_background = true,
+                styles = {
+                    italic = false
+                }
             })
-            -- vim.cmd.colorscheme 'rose-pine'
+
+            ColorMyPencils()
         end
     },
     {
@@ -28,7 +36,6 @@ return {
                         bg2 = '#000000',
                         bg3 = '#000000',
                         bg4 = '#000000',
-                        float_bg = '#000000',
                     }
                 },
                 darken = {
@@ -40,7 +47,7 @@ return {
                 }
              })
 
-            vim.cmd.colorscheme('github_dark_default')
+            ColorMyPencils('github_dark_default')
         end,
     }
 }
