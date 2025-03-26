@@ -1,5 +1,6 @@
 -- Close buffer
 vim.keymap.set('n', '<leader>w', ' :<C-U>bprevious <bar> bdelete #<CR>', { silent = true, desc = 'Close buffer' })
+vim.keymap.set("n", "Q", "<nop>")
 
 -- Move highlighted lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
@@ -24,6 +25,9 @@ vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
+
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
 
 vim.keymap.set('n', '\\r', function()
     vim.wo.relativenumber = not vim.wo.relativenumber
