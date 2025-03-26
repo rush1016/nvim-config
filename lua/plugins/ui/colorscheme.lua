@@ -3,8 +3,10 @@ function ColorMyPencils(color)
 	vim.cmd.colorscheme(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+    vim.api.nvim_set_hl(0, "ModeMsg", { bg = "none" })
 end
 
 return {
@@ -49,5 +51,15 @@ return {
 
             ColorMyPencils('github_dark_default')
         end,
+    },
+    {
+        'Mofiqul/vscode.nvim',
+        name = 'vscode',
+        config = function()
+            require('vscode').setup({
+                transparent = true
+            })
+            -- ColorMyPencils('vscode')
+        end
     }
 }
