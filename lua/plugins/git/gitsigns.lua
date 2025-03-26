@@ -5,6 +5,12 @@ return {
             numhl = true,
             signcolumn = false,
             on_attach = function(bufnr)
+                require('gitsigns').setup({
+                    preview_config = {
+                        border = 'rounded',
+                    },
+                })
+
                 local gitsigns = require('gitsigns')
 
                 local function map(mode, l, r, opts)

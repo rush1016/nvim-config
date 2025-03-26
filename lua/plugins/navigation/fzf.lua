@@ -26,7 +26,7 @@ return {
                 }
             },
             fzf_opts = {
-                ["--info"] = "hidden",
+                ["--info"] = "inline-right",
                 ["--no-separator"] = true,
                 ["--layout"] = 'default',
                 ["--pointer"] = ' ',
@@ -35,9 +35,13 @@ return {
             },
             fzf_colors = {
                 ["bg"] = { "bg", "Normal" },
+                ["bg+"] = "-1",
                 ["pointer"] = { "bg", "Normal" },
-                ["gutter"] = { "bg", "Normal" },
+                ["gutter"] = "-1",
                 ["header"] = { "Normal" },
+            },
+            hls = {
+                border = 'none'
             },
             keymap = {
                 builtin = {
@@ -56,11 +60,12 @@ return {
             }
         })
         vim.keymap.set('n', '<leader>p', fzf.files, { desc = 'Open file' })
-        vim.keymap.set('n', '<leader>fc', fzf.live_grep_resume, { desc = 'Find in workspace (continue)' })
+        vim.keymap.set('n', '<leader>fc', fzf.resume, { desc = 'Resume last find operation' })
         vim.keymap.set('n', '<leader>ff', fzf.live_grep_native, { desc = 'Find in workspace' })
         vim.keymap.set('n', '<leader>e', fzf.buffers, { desc = 'Active buffers' })
         vim.keymap.set('n', '<leader>fh', fzf.help_tags, { desc = 'Help Tags' })
         vim.keymap.set('n', '<leader>o', fzf.lsp_document_symbols, { desc = 'Find symbols in document' })
+        vim.keymap.set('n', '<leader>t', fzf.lsp_live_workspace_symbols, { desc = 'Find symbols in workspace' })
         vim.keymap.set('n', '<leader>fb', fzf.blines, { desc = 'Find in buffer' })
     end
 }
