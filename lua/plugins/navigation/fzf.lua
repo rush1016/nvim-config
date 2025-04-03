@@ -7,6 +7,12 @@ return {
         local actions = fzf.actions;
         fzf.setup({
             {'max-perf', 'borderless-full'},
+            actions = {
+                files = {
+                    true,
+                    ["ctrl-g"]       = actions.toggle_ignore,
+                }
+            },
             files = {
                 cwd_prompt = false,
                 cwd_header = true
@@ -34,11 +40,9 @@ return {
                 ["--scrollbar"] = ' '
             },
             fzf_colors = {
-                ["bg"] = { "bg", "Normal" },
-                ["bg+"] = "-1",
+                ["bg"]      = { "bg", "Normal" },
                 ["pointer"] = { "bg", "Normal" },
-                ["gutter"] = "-1",
-                ["header"] = { "Normal" },
+                ["gutter"]  = "-1",
             },
             hls = {
                 border = 'none'
