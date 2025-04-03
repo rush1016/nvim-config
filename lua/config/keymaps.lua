@@ -1,10 +1,11 @@
 -- Close buffer
 vim.keymap.set('n', '<leader>w', ' :<C-U>bprevious <bar> bdelete #<CR>', { silent = true, desc = 'Close buffer' })
 vim.keymap.set("n", "Q", "<nop>")
-
 -- Move highlighted lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
+
+vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Auto center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
@@ -32,3 +33,11 @@ vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
 vim.keymap.set('n', '\\r', function()
     vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = 'Toggle relative number' })
+
+vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>")
+
+vim.keymap.set('n', '<Leader>ch', function()
+  local line = vim.fn.line('.')
+  local commit_hash = vim.fn.system(string.format("git blame -L %d,%d --show-number %s | head -n 1 | awk '{print $1}'", line, line, vim.fn.expand('%')))
+  vim.fn.setreg('+', commit_hash)
+end, {silent = true})
