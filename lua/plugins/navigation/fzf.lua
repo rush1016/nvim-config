@@ -20,8 +20,8 @@ return {
             winopts = {
                 backdrop = 100,
                 border = "rounded",
-                width = 0.90,
-                height = 0.90,
+                width = 0.75,
+                height = 0.75,
                 fullscreen = false,
                 preview = {
                     hidden = true,
@@ -41,6 +41,8 @@ return {
             },
             fzf_colors = {
                 ["bg"]      = { "bg", "Normal" },
+                ["hl+"]      = { "fg", "String" },
+                ["hl"]      = { "fg", "String" },
                 ["pointer"] = { "bg", "Normal" },
                 ["gutter"]  = "-1",
             },

@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
+	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -7,8 +7,20 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
     vim.api.nvim_set_hl(0, "ModeMsg", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
+
+    local ref_hl = vim.api.nvim_get_hl(0, { name = "@keyword", link = false })
+    vim.api.nvim_set_hl(0, "StatusLine", { fg = ref_hl.fg, bg = "#2e2e2e" })
 end
 
+vim.api.nvim_create_user_command(
+    'ColorMyPencils',
+    function(opts)
+        local color = opts.args ~= '' and opts.args or nil
+        ColorMyPencils(color)
+    end,
+    { nargs = '?' }
+)
 return {
     {
         'rose-pine/neovim',
@@ -21,7 +33,7 @@ return {
                 }
             })
 
-            ColorMyPencils()
+            -- ColorMyPencils("rose-pine")
         end
     },
     {
@@ -31,15 +43,6 @@ return {
         priority = 1000,
         config = function()
             require('github-theme').setup({
-                specs = {
-                    github_dark_default = {
-                        bg0 = '#000000',
-                        bg1 = '#000000',
-                        bg2 = '#000000',
-                        bg3 = '#000000',
-                        bg4 = '#000000',
-                    }
-                },
                 darken = {
                     floats = true,
                     sidebars = {
@@ -49,17 +52,14 @@ return {
                 }
              })
 
-            ColorMyPencils('github_dark_default')
+            ColorMyPencils()
         end,
     },
     {
         'Mofiqul/vscode.nvim',
         name = 'vscode',
-        config = function()
-            require('vscode').setup({
-                transparent = true
-            })
-            -- ColorMyPencils('vscode')
-        end
+    },
+    {
+        'metalelf0/base16-black-metal-scheme'
     }
 }
