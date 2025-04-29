@@ -76,6 +76,30 @@ return {
                     end
                 }
             })
+
+            local lspconfig = require('lspconfig')
+            lspconfig.gopls.setup({
+                cmd = { "gopls" },
+                filetypes = { "go", "gomod", "gohtmltmpl", "gotexttmpl" },
+                root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
+                settings = {
+                    gopls = {
+                        analyses = {
+                            nilness = true,             -- detects redundant or impossible nil checks
+                            unusedparams = true,        -- detects unused function parameters (already added)
+                            unusedwrite = true,         -- detects writes to variables that are never read
+                            useany = true,              -- detects use of 'interface{}' when 'any' could be used (Go 1.18+)
+                            shadow = true,              -- detects shadowed variables (like in nested scopes)
+                            undeclaredname = true,      -- detects use of undeclared names
+                            unreachable_code = true,    -- detects unreachable code (already added)
+                            nilfunc = true,             -- detects calls to nil functions
+                            unusedvariable = true,      -- detects unused variables
+                            ST1000 = true,              -- style: package comment should be of the form "Package pkg ..."
+                        },
+                        staticcheck = true,
+                    },
+                },
+            })
         end
     },
     {
