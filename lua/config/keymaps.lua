@@ -25,7 +25,7 @@ vim.keymap.set('v', '<S-a>', '<esc>`>a', { noremap = true })
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-vim.keymap.set("n", "<C-f>", "<cmd>!tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
@@ -38,6 +38,26 @@ vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>")
 
 vim.keymap.set('n', '<Leader>ch', function()
   local line = vim.fn.line('.')
-  local commit_hash = vim.fn.system(string.format("git blame -L %d,%d --show-number %s | head -n 1 | awk '{print $1}'", line, line, vim.fn.expand('%')))
+  local commit_hash = vim.fn.system(
+      string.format("git blame -L %d,%d --show-number %s | awk '{print $1}'", line, line, vim.fn.expand('%'))
+  )
+  commit_hash = vim.fn.trim(commit_hash)
   vim.fn.setreg('+', commit_hash)
 end, {silent = true})
+
+vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = "Show diagnostics" })
+
+vim.keymap.set('n', '<leader>q', function()
+  local has_qf = false
+  for _, win in ipairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      has_qf = true
+      break
+    end
+  end
+  if has_qf then
+    vim.cmd('cclose')
+  else
+    vim.cmd('copen')
+  end
+end, { silent = true })
