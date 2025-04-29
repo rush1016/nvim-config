@@ -48,10 +48,7 @@ return {
                 map('n', '<leader>hR', gitsigns.reset_buffer, { silent = true, desc = 'Reset buffer' })
                 map('n', '<leader>hp', gitsigns.preview_hunk, { silent = true, desc = 'Preview hunk' })
                 map('n', '<leader>hb', function() gitsigns.blame_line{full=true} end, { silent = true, desc = 'Preview blame' })
-                map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { silent = true, desc = 'Toggle current line blame' })
-                map('n', '<leader>hd', gitsigns.diffthis, { silent = true, desc = 'Open diff' })
-                map('n', '<leader>hD', function() gitsigns.diffthis('~') end, { silent = true, desc = 'Open diff' })
-                map('n', '<leader>td', gitsigns.toggle_deleted, { silent = true, desc = 'Toggle deleted' })
+                map('n', '<leader>hd', gitsigns.toggle_deleted, { silent = true, desc = 'Toggle deleted' })
 
                 -- Text object
                 map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
