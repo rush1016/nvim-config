@@ -31,6 +31,8 @@ vim.opt.laststatus = 3
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.opt.fixendofline = false
+
 vim.api.nvim_set_option('clipboard', 'unnamed')
 
 vim.filetype.add({
