@@ -41,7 +41,7 @@ return {
             },
             fzf_colors = {
                 ["bg"]      = { "bg", "Normal" },
-                ["hl+"]      = { "fg", "String" },
+                ["hl+"]     = { "fg", "String" },
                 ["hl"]      = { "fg", "String" },
                 ["pointer"] = { "bg", "Normal" },
                 ["gutter"]  = "-1",

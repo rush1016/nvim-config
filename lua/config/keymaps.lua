@@ -4,6 +4,8 @@ vim.keymap.set("n", "Q", "<nop>")
 -- Move highlighted lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
+vim.keymap.set('v', '>', ">gv", { silent = true })
+vim.keymap.set('v', '<', "<gv", { silent = true })
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
@@ -45,6 +47,10 @@ vim.keymap.set('n', '<Leader>ch', function()
   vim.fn.setreg('+', commit_hash)
 end, {silent = true})
 
+vim.keymap.set('n', '<Leader>cd', function()
+    vim.fn.setreg('+', vim.fn.fnamemodify(vim.fn.expand('%'), ":."))
+end, { silent = true })
+
 vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = "Show diagnostics" })
 
 vim.keymap.set('n', '<leader>q', function()
@@ -61,3 +67,4 @@ vim.keymap.set('n', '<leader>q', function()
     vim.cmd('copen')
   end
 end, { silent = true })
+

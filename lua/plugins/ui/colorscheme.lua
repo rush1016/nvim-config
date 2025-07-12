@@ -58,6 +58,9 @@ return {
     {
         'Mofiqul/vscode.nvim',
         name = 'vscode',
+        config = function()
+            ColorMyPencils("vscode")
+        end
     },
     {
         'metalelf0/base16-black-metal-scheme'
