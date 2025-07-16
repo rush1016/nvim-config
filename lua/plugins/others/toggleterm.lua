@@ -27,22 +27,53 @@ return {
         })
 
         local Terminal  = require('toggleterm.terminal').Terminal
+        local float_opts = {
+            border = 'double',
+            width = 180,
+            height = 40,
+            winblend = 0,
+        }
+
         local lazygit = Terminal:new({
             cmd = "lazygit",
             hidden = true,
             direction = 'float',
-            float_opts = {
-                border = 'double',
-                width = 180,
-                height = 40,
-                winblend = 0,
-            }
+            float_opts = float_opts
         })
 
-        function _lazygit_toggle()
+        local function _lazygit_toggle()
             lazygit:toggle()
         end
 
-        vim.api.nvim_set_keymap("n", "<leader>gl", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true, desc = 'LazyGit' })
+        local function _search_pr()
+            local git = require("custom.git")
+            local commit_hash = git.get_commit_hash_for_current_line()
+
+            local gh_pr_term = Terminal:new({
+                cmd = string.format("~/.dotfiles/scripts/search-pull-request-by-hash.sh %s", commit_hash),
+                direction = "float",
+                float_opts = float_opts,
+                hidden = true,
+            })
+
+            gh_pr_term:toggle()
+        end
+
+        local function _git_show()
+            local git = require("custom.git")
+            local commit_hash = git.get_commit_hash_for_current_line()
+            local gh_pr_term = Terminal:new({
+                cmd = string.format("git show %s", commit_hash),
+                direction = "float",
+                float_opts = float_opts,
+                hidden = true,
+            })
+
+            gh_pr_term:toggle()
+        end
+
+        vim.keymap.set("n", "<leader>gl", _lazygit_toggle, {noremap = true, silent = true, desc = 'LazyGit' })
+        vim.keymap.set('n', '<Leader>gp', _search_pr, {noremap = true, silent = true, desc = 'Search PR'})
+        vim.keymap.set('n', '<Leader>gs', _git_show, {noremap = true, silent = true, desc = 'Git show'})
     end
 }
