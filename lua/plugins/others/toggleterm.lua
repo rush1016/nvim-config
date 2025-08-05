@@ -72,8 +72,30 @@ return {
             gh_pr_term:toggle()
         end
 
+        local function _view_line_history()
+            local start_line = vim.fn.line("v")
+            local line = vim.fn.line(".");
+
+            if not start_line or start_line == 0 then
+                start_line = line
+            end
+            local file = vim.fn.fnameescape(vim.fn.expand('%'))
+            local git_cmd = string.format("git log -L %d,%d:%s; echo; echo Press ENTER to exit; read", start_line, line, file)
+            local tmux_cmd = string.format("tmux new-window -n changes 'bash -c %q'", git_cmd)
+            local git_log = Terminal:new({
+                cmd = tmux_cmd,
+                direction = "float",
+                float_opts = float_opts,
+                hidden = true,
+            })
+
+            git_log:toggle()
+        end
+
         vim.keymap.set("n", "<leader>gl", _lazygit_toggle, {noremap = true, silent = true, desc = 'LazyGit' })
         vim.keymap.set('n', '<Leader>gp', _search_pr, {noremap = true, silent = true, desc = 'Search PR'})
         vim.keymap.set('n', '<Leader>gs', _git_show, {noremap = true, silent = true, desc = 'Git show'})
+        vim.keymap.set('n', '<Leader>gh', _view_line_history, {noremap = true, silent = true, desc = 'Git view change history'})
+        vim.keymap.set('v', '<Leader>gh', _view_line_history, {noremap = true, silent = true, desc = 'Git view change history'})
     end
 }
