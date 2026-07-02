@@ -51,3 +51,27 @@ vim.filetype.add({
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
 
+local original_get_option = vim.filetype.get_option
+vim.filetype.get_option = function(filetype, option)
+  -- Only intercept commentstring requests on Vue buffers
+  if option == "commentstring" and vim.bo.filetype == "vue" then
+    local cursor_row = vim.api.nvim_win_get_cursor(0)[1]
+    local lines = vim.api.nvim_buf_get_lines(0, 0, cursor_row, false)
+    
+    -- Scan backwards from the cursor to see what block tag we are inside
+    for i = #lines, 1, -1 do
+      local line = lines[i]
+      if line:match("<script") then
+        return "// %s"
+      elseif line:match("<style") then
+        return "/* %s */"
+      elseif line:match("<template") then
+        return "<!-- %s -->"
+      end
+    end
+    -- Default fallback if outside structural elements
+    return "<!-- %s -->"
+  end
+
+  return original_get_option(filetype, option)
+end
