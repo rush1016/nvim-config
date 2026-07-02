@@ -14,13 +14,10 @@ return {
     {
         'neovim/nvim-lspconfig',
         config = function()
-            local lspconfig_defaults = require('lspconfig').util.default_config
-            lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-                'force',
-                lspconfig_defaults.capabilities,
-                require('cmp_nvim_lsp').default_capabilities()
-            )
-
+            -- Global capabilities for all servers (replaces lspconfig_defaults.capabilities)
+            vim.lsp.config('*', {
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 desc = 'LSP actions',
@@ -39,6 +36,47 @@ return {
                     vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
                 end,
             })
+
+            vim.lsp.config('ts_ls', {
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = "/Users/qip-innovation/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                            languages = { "vue" },
+                        },
+                    },
+                },
+                filetypes = {
+                    "javascript",
+                    "typescript",
+                    "vue",
+                },
+            })
+
+            vim.lsp.config('gopls', {
+                cmd = { "gopls" },
+                filetypes = { "go", "gomod", "gohtmltmpl", "gotexttmpl" },
+                root_markers = { "go.mod", ".git" },  -- replaces util.root_pattern
+                settings = {
+                    gopls = {
+                        analyses = {
+                            nilness = true,
+                            unusedparams = true,
+                            unusedwrite = true,
+                            useany = true,
+                            shadow = true,
+                            undeclaredname = true,
+                            unreachable_code = true,
+                            nilfunc = true,
+                            unusedvariable = true,
+                            ST1000 = true,
+                        },
+                        staticcheck = true,
+                    },
+                },
+            })
+            vim.lsp.enable('gopls')
         end
     },
     {
@@ -51,54 +89,8 @@ return {
         'williamboman/mason-lspconfig.nvim',
         config = function()
             require('mason-lspconfig').setup({
-                ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'intelephense', 'volar' },
-                handlers = {
-                    function(server_name)
-                        require('lspconfig')[server_name].setup({})
-                    end,
-                    ts_ls = function()
-                        require('lspconfig').ts_ls.setup({
-                            init_options = {
-                                plugins = {
-                                    {
-                                        name = "@vue/typescript-plugin",
-                                        location = "/Users/qip-innovation/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server",
-                                        languages = { "vue" },
-                                    },
-                                },
-                            },
-                            filetypes = {
-                                "javascript",
-                                "typescript",
-                                "vue",
-                            },
-                        })
-                    end
-                }
-            })
-
-            local lspconfig = require('lspconfig')
-            lspconfig.gopls.setup({
-                cmd = { "gopls" },
-                filetypes = { "go", "gomod", "gohtmltmpl", "gotexttmpl" },
-                root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
-                settings = {
-                    gopls = {
-                        analyses = {
-                            nilness = true,             -- detects redundant or impossible nil checks
-                            unusedparams = true,        -- detects unused function parameters (already added)
-                            unusedwrite = true,         -- detects writes to variables that are never read
-                            useany = true,              -- detects use of 'interface{}' when 'any' could be used (Go 1.18+)
-                            shadow = true,              -- detects shadowed variables (like in nested scopes)
-                            undeclaredname = true,      -- detects use of undeclared names
-                            unreachable_code = true,    -- detects unreachable code (already added)
-                            nilfunc = true,             -- detects calls to nil functions
-                            unusedvariable = true,      -- detects unused variables
-                            ST1000 = true,              -- style: package comment should be of the form "Package pkg ..."
-                        },
-                        staticcheck = true,
-                    },
-                },
+                ensure_installed = { 'lua_ls', 'eslint', 'ts_ls', 'intelephense' },
+                automatic_enable = true,
             })
         end
     },
