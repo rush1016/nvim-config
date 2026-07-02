@@ -82,14 +82,8 @@ return {
             local file = vim.fn.fnameescape(vim.fn.expand('%'))
             local git_cmd = string.format("git log -L %d,%d:%s; echo; echo Press ENTER to exit; read", start_line, line, file)
             local tmux_cmd = string.format("tmux new-window -n changes 'bash -c %q'", git_cmd)
-            local git_log = Terminal:new({
-                cmd = tmux_cmd,
-                direction = "float",
-                float_opts = float_opts,
-                hidden = true,
-            })
 
-            git_log:toggle()
+            vim.fn.system(tmux_cmd)
         end
 
         vim.keymap.set("n", "<leader>gl", _lazygit_toggle, {noremap = true, silent = true, desc = 'LazyGit' })
