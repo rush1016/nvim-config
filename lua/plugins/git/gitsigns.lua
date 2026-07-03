@@ -54,6 +54,7 @@ return {
                 map('n', '<leader>hp', gitsigns.preview_hunk, { silent = true, desc = 'Preview hunk' })
                 map('n', '<leader>hb', function() gitsigns.blame_line{full=true} end, { silent = true, desc = 'Preview blame' })
                 map('n', '<leader>hd', gitsigns.toggle_deleted, { silent = true, desc = 'Toggle deleted' })
+                map('n', '<leader>hw', gitsigns.toggle_word_diff, { silent = true, desc = 'Toggle deleted' })
 
                 -- Text object
                 map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')

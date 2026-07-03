@@ -8,9 +8,14 @@ function ColorMyPencils(color)
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
     vim.api.nvim_set_hl(0, "ModeMsg", { bg = "none" })
     vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+    vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
 
     local ref_hl = vim.api.nvim_get_hl(0, { name = "@keyword", link = false })
-    vim.api.nvim_set_hl(0, "StatusLine", { fg = ref_hl.fg, bg = "#2e2e2e" })
+    if color ~= 'rose-pine' then
+        vim.api.nvim_set_hl(0, "StatusLine", { fg = ref_hl.fg, bg = "#2e2e2e" })
+    end
 end
 
 vim.api.nvim_create_user_command(
@@ -59,7 +64,7 @@ return {
         'Mofiqul/vscode.nvim',
         name = 'vscode',
         config = function()
-            ColorMyPencils("vscode")
+            -- ColorMyPencils("vscode")
         end
     },
     {

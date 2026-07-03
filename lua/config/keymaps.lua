@@ -35,6 +35,9 @@ vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>zz")
 vim.keymap.set('n', '\\r', function()
     vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = 'Toggle relative number' })
+vim.keymap.set('n', '\\n', function()
+    vim.wo.number = not vim.wo.number
+end, { desc = 'Toggle relative number' })
 
 vim.keymap.set("n", "<leader>x", ":!chmod +x %<CR>")
 
