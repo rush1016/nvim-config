@@ -6,7 +6,6 @@ return {
             signcolumn = false,
             on_attach = function(bufnr)
                 require('gitsigns').setup({
-                    word_diff = true,
                     signcolumn = true,
                     preview_config = {
                         border = 'rounded',
