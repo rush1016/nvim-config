@@ -29,6 +29,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 6
 vim.opt.signcolumn = 'yes:1'
 vim.opt.colorcolumn = '100'
+vim.opt.splitbelow = true
 
 vim.opt.updatetime = 50
 
