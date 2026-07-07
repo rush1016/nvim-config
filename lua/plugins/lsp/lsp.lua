@@ -77,6 +77,14 @@ return {
                 },
             })
             vim.lsp.enable('gopls')
+
+            vim.lsp.config('csharp_ls', {
+                  cmd = { 'csharp-ls' },
+                  filetypes = { 'cs' },
+                  root_markers = { '*.sln', '*.csproj' },
+            })
+
+            vim.lsp.enable('csharp_ls')
         end
     },
     {
